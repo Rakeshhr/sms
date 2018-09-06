@@ -6,53 +6,114 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+   <!-- Bootstrap CSS -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="static/css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="static/css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="static/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="static/css/style.css" rel="stylesheet">
+  <link href="static/css/style-responsive.css" rel="stylesheet" />
+
 <title>Book Page</title>
 </head>
 <body>
 	
 	<h1>Book Maintenance</h1>
-	<form:form action="book.html" method="post">
-			<form:label path="ISBN">ISBN</form:label>
-			<form:input path="ISBN"/>
-			
-			<form:label path="title">Title</form:label>
-			<form:input path="title"/>			
+	
+	
+        <div class="row">
+          <div class="col-lg-12">
+            <section class="panel">
+              <header class="panel-heading">
+                Book Maintenance
+              </header>
+              <div class="panel-body">
+                <div class="form">
+				  	<form:form class="form-validate form-horizontal" action="book.html" method="post">
+				  	
+				  	<div class="form-group ">
+                      <form:label path="ISBN" class="control-label col-lg-2">ISBN <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="ISBN" class="form-control" minlength="5" maxlength="25" required="true"/>
+                      </div>
+                    </div>
+				  	
+				  	<div class="form-group ">
+                      <form:label path="title" class="control-label col-lg-2">Title <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="title" class="form-control" minlength="5" maxlength="25" required="true"/>	
+                      </div>
+                    </div>
+				  	<div class="form-group ">
+                      <form:label path="price" class="control-label col-lg-2">Price <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="price" class="form-control" minlength="5" maxlength="25" required="true"/>	
+                      </div>
+                    </div>
+				  	<div class="form-group ">
+                      <form:label path="category" class="control-label col-lg-2">Category <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="category" class="form-control" minlength="5" maxlength="25" required="true"/>
+                      </div>
+                    </div>                                        							
+							
+					<div class="form-group">
+                      <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button class="btn btn-default" type="button">Cancel</button>
+                      </div>
+                    </div>							
+									
+							
+						
+						</form:form>
+                </div>
 
-			<form:label path="price">Price</form:label>
-			<form:input path="price"/>	
-				
-			<form:label path="category">Category</form:label>
-			<form:input path="category"/>		
-			<input type="submit" value="Create"/>
-		
-		</form:form>
+              </div>
+            </section>
+          </div>
+        </div>	
+
 		
 		
 		<h2>Existing Books</h2>
 		
+    <div class="row">
+    
 		<c:if test="${not empty BOOKLIST}">
-			<table>
-				<tr>
-					<th>
-						<td>ISBN</td>
-						<td>TITLE</td>
-						<td>PRICE</td>
-						<td>CATEGORY</td>
-					</th>
-				</tr>
-				<c:forEach var="s" items="${BOOKLIST}">
+
+		<div class="col-sm-6">
+            <section class="panel">
+              <header class="panel-heading">Book Details</header>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Price</th>
+		    		<th>Category</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <c:forEach var="s" items="${BOOKLIST}">
 					<tr>
 						<td> <c:out value="${s.ISBN}"/> </td>
 						<td><c:out value="${s.title}"/></td>
 						<td><c:out value="${s.price}"/></td>
 						<td><c:out value="${s.category}"/></td>
-						<%-- <td><a href="/book/del/${s.ISBN}">Delete</a></td> --%>
 						<td><a href="<c:url value='/bookdel-${s.ISBN}'/>">Delete</a></td>
 					</tr>
-				</c:forEach>				
-			
-			</table>
-		
+				</c:forEach>
+                </tbody>
+              </table>
+            </section>
+          </div>
+	</div>
 		
 		</c:if>
 		
