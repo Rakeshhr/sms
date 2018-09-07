@@ -44,25 +44,29 @@
   <div class="container">
 
     <form class="login-form" action="checklogin.html" method="post">
+
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
+
           <input name="username" type="text" class="form-control" placeholder="Username" autofocus>
         </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
           <input name="password" type="password" class="form-control" placeholder="Password">
+
         </div>
         <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
-            				<c:if test="${param.error != null}">
+          				<c:if test="${param.error != null}">
 								<div class="alert alert-danger">
 									<p>Invalid username and password.</p>
 								</div>
 							</c:if>
+
         <button class="btn btn-primary btn-lg btn-block" type="submit" >Login</button>
         <a></a>
         <a href="signup.html" class="btn btn-info btn-lg btn-block" type="submit">Signup</a>

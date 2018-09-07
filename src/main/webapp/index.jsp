@@ -2,21 +2,12 @@
 
 <html>
 <head>
- 
 
 </head>
 
 <body>
 
-<!-- 	<a href="student.html">Student Management</a><br/> -->
-<!-- 	<a href="book.html">Book Management</a> -->
+    <c:redirect url="login.html"/>
 
-<!-- 	<br> -->
-<!-- 	<a href="course.html">Course Management</a> -->
-		
-		
-		
-		 		<c:redirect url="login.html"/>
-		
 </body>
 </html>
