@@ -1,10 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <html>
 <head>
 
 </head>
 
 <body>
+
     <c:redirect url="login.html"/>
+
 </body>
 </html>

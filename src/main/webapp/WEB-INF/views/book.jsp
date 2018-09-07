@@ -85,7 +85,7 @@
 		
     <div class="row">
     
-		<c:if test="${not empty BOOKLIST}">
+		<c:if test="${not empty BOOKLIST}"/>
 
 		<div class="col-sm-6">
             <section class="panel">
@@ -115,7 +115,7 @@
           </div>
 	</div>
 		
-		</c:if>
+		
 		
 </body>
 </html>
