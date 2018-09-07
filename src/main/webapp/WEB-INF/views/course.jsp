@@ -7,16 +7,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <!-- Bootstrap CSS -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="static/css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="static/css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="static/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="static/css/style.css" rel="stylesheet">
+  <link href="static/css/style-responsive.css" rel="stylesheet" />
+
 <title>course Page</title>
 </head>
-<style>
-h1	{
-color:bule
-	};
-h2	{
-color:bule
-	};
-</style>
 <body bgcolor=#00CED1>
 
 	<h1>Course Maintenance</h1>
@@ -32,48 +36,88 @@ color:bule
 <!-- 	</form> -->
 	
 	
-		<form:form action="course.html" method="post">
-			<form:label path="courseid">Course Id</form:label>
-			<form:input path="courseid"/>
-			
-			<form:label path="coursetitle">Course Title</form:label>
-			<form:input path="coursetitle"/>			
+		 <div class="row">
+          <div class="col-lg-12">
+            <section class="panel">
+              <header class="panel-heading">
+                Book Maintenance
+              </header>
+              <div class="panel-body">
+                <div class="form">
+				  	<form:form class="form-validate form-horizontal" action="course.html" method="post">
+				  	
+				  	<div class="form-group ">
+                      <form:label path="courseid" class="control-label col-lg-2">course id <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="courseid" class="form-control" minlength="5" maxlength="25" required="true"/>
+                      </div>
+                    </div>
+				  	
+				  	<div class="form-group ">
+                      <form:label path="coursetitle" class="control-label col-lg-2">course Title <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="coursetitle" class="form-control" minlength="5" maxlength="25" required="true"/>	
+                      </div>
+                    </div>
+				  	<div class="form-group ">
+                      <form:label path="course" class="control-label col-lg-2">course <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="course" class="form-control" minlength="5" maxlength="25" required="true"/>	
+                      </div>
+                    </div>
+				  			
+					<div class="form-group">
+                      <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button class="btn btn-default" type="button">Cancel</button>
+                      </div>
+                    </div>							
+									
+							
+						
+						</form:form>
+                </div>
 
-			<form:label path="course">Course</form:label>
-			<form:input path="course"/>	
-					
-			<input type="submit" value="Create"/>
-			
+              </div>
+            </section>
+          </div>
+        </div>	
+
+
+<h2>Existing Books</h2>
 		
-		</form:form>
-		
-		<h2>Existing Course</h2>
-		
+    <div class="row">
+    
 		<c:if test="${not empty COURSELIST}">
-			<table>
-				<tr>
-					<th>
-						<td>Course Id</td>
-						<td>Course Title</td>
-						<td>Course</td>
-						<td>Delete</td>
-					</th>
-				</tr>
-				<c:forEach var="s" items="${COURSELIST}">
-				<tr>
-					<th>
+
+		<div class="col-sm-6">
+            <section class="panel">
+              <header class="panel-heading">Book Details</header>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Course Id</th>
+                    <th>Course Title</th>
+                    <th>Course</th>
+		    		<th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <c:forEach var="s" items="${COURSELIST}">
+					<tr>
 						<td> <c:out value="${s.courseid}"/> </td>
 						<td><c:out value="${s.coursetitle}"/></td>
 						<td><c:out value="${s.course}"/></td>
 						<td><a href="delete-${s.courseid}">delete</a></td>
-					</th>
-				</tr>	
-				</c:forEach>				
-			
-			</table>
-		
+					</tr>
+				</c:forEach>
+                </tbody>
+              </table>
+            </section>
+          </div>
+	</div>
 		
 		</c:if>
-
+			
 </body>
 </html>
