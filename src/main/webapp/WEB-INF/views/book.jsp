@@ -22,7 +22,9 @@
 <title>Book Page</title>
 </head>
 <body>
-	
+	 <section id="main-content">
+      <section class="wrapper">
+      <jsp:include page="home.jsp"> 
 	<h1>Book Maintenance</h1>
 	
 	
@@ -114,8 +116,10 @@
             </section>
           </div>
 	</div>
-		
-		
-		
+		</jsp:include>	
+	</section>
+	</section>
+	
+	
 </body>
 </html>

@@ -1,3 +1,5 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +43,7 @@
 
   <div class="container">
 
-    <form class="login-form" action="checklogin.html">
+    <form class="login-form" action="checklogin.html" method="post">
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
@@ -56,6 +58,11 @@
                 <input type="checkbox" value="remember-me"> Remember me
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
+            				<c:if test="${param.error != null}">
+								<div class="alert alert-danger">
+									<p>Invalid username and password.</p>
+								</div>
+							</c:if>
         <button class="btn btn-primary btn-lg btn-block" type="submit" >Login</button>
         <a></a>
         <a href="signup.html" class="btn btn-info btn-lg btn-block" type="submit">Signup</a>

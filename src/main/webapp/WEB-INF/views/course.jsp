@@ -18,6 +18,8 @@ color:bule
 	};
 </style>
 <body bgcolor=#00CED1>
+<section id="main-content">
+      <section class="wrapper">
 
 	<h1>Course Maintenance</h1>
 	
@@ -74,6 +76,8 @@ color:bule
 		
 		
 		</c:if>
+		</section>
+		</section>
 
 </body>
 </html>

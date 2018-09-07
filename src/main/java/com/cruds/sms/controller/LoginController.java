@@ -3,37 +3,41 @@ package com.cruds.sms.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.User;
-import com.cruds.sms.service.BookService;
+
 import com.cruds.sms.service.UserService;
 @Controller
+@SessionAttributes("USER")
 public class LoginController {
 	
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String redirecttoLogin()
 	{
 		return "login";
 	}
 	
-	@RequestMapping(value="/checklogin")
-	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password)
+	@RequestMapping(value="/checklogin",method=RequestMethod.POST)
+	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,RedirectAttributes redirectAttributes, ModelMap model)
 	{
 		
-			boolean check = UserService.authenticateUser(username, password);
-			if(check)
+			boolean user = UserService.authenticateUser(username, password);
+			if(user)
 			{
+				model.addAttribute("USER", user);
 				return "home";
 			}
 			else
 			{
-				return "login";
+				redirectAttributes.addAttribute("error", "Invalid username and password!");
+				return "redirect:login";
 			}
 		
 	}
@@ -53,5 +57,6 @@ public class LoginController {
 		UserService.createUser(user);
 		return "redirect:login.html";
 	}
-
+	
+	
 }
