@@ -13,12 +13,8 @@
   <!-- font icon -->
   <link href="static/css/elegant-icons-style.css" rel="stylesheet" />
   <link href="static/css/font-awesome.min.css" rel="stylesheet" />
-  <!-- full calendar css-->
-  <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-  <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-  <!-- easy pie chart-->
-  <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-  <!-- owl carousel -->
+  
+ 
   <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
   <link href="static/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
   <!-- Custom styles -->
@@ -39,27 +35,28 @@
       		 <!--logo start-->
       		<a href="index.html" class="logo">CRUDS <span class="lite">INFOTECH</span></a>
       		<!--logo end-->
-      	<div class="top-nav notification-row">
-        	<!-- notificatoin dropdown start-->
+     <div class="top-nav notification-row">
+        	
         <ul class="nav pull-right top-menu">
-        <li id="task_notificatoin_bar" class="dropdown">	
-        <li class="dropdown">
-      		<a  href="#">
-            <span class="profile-ava">
-              	<img alt="" src="img/avatar1_small.jpg">
-            </span>
-         	<span class="username">Jenifer Smith</span>
-            	<b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu extended logout">
-				<div class="log-arrow-up"></div>
-					<li>
-						<a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-					</li>
-			</ul>	
-		</li>
-		</li>
-        </ul>
+        	
+       		 		
+      				<a href="#">
+            			<span class="profile-ava">
+              			<img alt="" src="static/img/avatar1_small.jpg">
+            			</span>
+         				<span class="username">Hii ${uname}</span>
+            			<b class="caret"></b>
+            		</a>
+            		
+						<div class="log-arrow-up"></div>
+						
+						
+						<a href="logout.html"> Log Out</a>
+						
+					</ul>	
+				
+		
+       
        </div>
             
        </header>
@@ -86,6 +83,8 @@
         </ul>
       </div>
     </aside>
+    </section>
+    
 
 </body>
 </html>

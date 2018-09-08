@@ -1,5 +1,9 @@
 package com.cruds.sms.controller;
 
+
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,12 +28,13 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/checklogin",method=RequestMethod.POST)
-	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,RedirectAttributes redirectAttributes, ModelMap model)
+	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,RedirectAttributes redirectAttributes, ModelMap model,HttpSession session)
 	{
 		
 			boolean user = UserService.authenticateUser(username, password);
 			if(user)
 			{
+				session.setAttribute("uname",username);
 				model.addAttribute("USER", user);
 				return "home";
 			}
@@ -56,6 +61,14 @@ public class LoginController {
 		UserService.createUser(user);
 		return "redirect:login.html";
 	}
+	
+	@RequestMapping(value = { "/logout"}, method = RequestMethod.GET)
+    public String logout(HttpSession session,Model model) {
+		
+		session.invalidate();
+		model.asMap().clear();
+        return "redirect:login";
+    }	
 	
 	
 }

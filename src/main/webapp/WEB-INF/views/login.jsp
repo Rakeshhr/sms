@@ -66,6 +66,11 @@
 									<p>Invalid username and password.</p>
 								</div>
 							</c:if>
+							<c:if test="${param.logout != null}">
+								<div class="alert alert-success">
+									<p>You have been logged out successfully.</p>
+								</div>
+							</c:if>			
 
         <button class="btn btn-primary btn-lg btn-block" type="submit" >Login</button>
         <a></a>
