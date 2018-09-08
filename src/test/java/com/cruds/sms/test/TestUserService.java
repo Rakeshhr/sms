@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.User;
+import com.cruds.sms.service.BookService;
 import com.cruds.sms.service.UserService;
 
 public class TestUserService {
@@ -34,6 +36,18 @@ public class TestUserService {
 	{
 		boolean result = UserService.authenticateUser("Sada", "123");
 		assertFalse(result);
-	}	
+	}
+	
+	@Test
+	public void deletebook()
+	{
+		Book book = new Book(-111, "Test", 0.0f, "Test");
+		boolean createResult = BookService.create(book);
+		assertTrue(createResult);
+		
+		boolean result = BookService.delete(-111);
+		assertTrue(result);
+
+	}
 
 }
