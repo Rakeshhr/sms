@@ -1,5 +1,7 @@
 package com.cruds.sms.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +21,14 @@ public class Coursecontroller {
 	@RequestMapping(value="/course", method=RequestMethod.GET)
 	public ModelAndView showStudentForm()
 	{
+		
+		
 		System.out.println("Inside Show course Form GET");
 		ModelAndView mv = new ModelAndView("course", "command", new Course());
 		mv.addObject("COURSELIST", CourseService.getAllCourse());
 		
 		return mv;
+		
 	}
 	
 /*	@RequestMapping(value="/student", method=RequestMethod.POST)

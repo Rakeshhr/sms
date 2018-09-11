@@ -33,7 +33,7 @@
         		<div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
       			</div>
       		 <!--logo start-->
-      		<a href="index.html" class="logo">CRUDS <span class="lite">INFOTECH</span></a>
+      		<a href="home.html" class="logo">CRUDS <span class="lite">INFOTECH</span></a>
       		<!--logo end-->
      <div class="top-nav notification-row">
         	
@@ -69,11 +69,14 @@
                           <i class="icon_house_alt"></i>
                           <span>Student</span>
             </a>
-					  
+            </li>
+			<li>		  
 			<a class="" href="book.html">
                           <i class="icon_book_alt"></i>
                           <span>book</span>
             </a>
+            </li>
+            <li>
 			<a class="" href="course.html">
                           <i class="icon_book_alt"></i>
                           <span>course</span>

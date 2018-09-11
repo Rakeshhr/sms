@@ -70,5 +70,20 @@ public class LoginController {
         return "redirect:login";
     }	
 	
+	@RequestMapping(value = { "/cancel"}, method = RequestMethod.GET)
+    public String cancel(HttpSession session,Model model) {
+		
+		session.invalidate();
+		model.asMap().clear();
+        return "redirect:login";
+    }	
+	
+	
+	@RequestMapping(value="/home",method=RequestMethod.GET)
+	public String redirecttohome()
+	{
+		return "home";
+	}
+	
 	
 }

@@ -67,7 +67,7 @@
 					<div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" type="submit">Save</button>
-                        <button class="btn btn-default" type="button">Cancel</button>
+                        <a href="cancel.html" class="btn btn-default" type="button">Cancel</a>
                       </div>
                     </div>							
 									
