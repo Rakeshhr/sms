@@ -4,6 +4,9 @@
 <hibernate-configuration>
 
 <session-factory>
+
+	<property name="hbm2ddl.auto">update</property>
+	<mapping class="com.cruds.sms.entity.Course" />
         
 </session-factory>
 

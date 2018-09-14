@@ -2,26 +2,34 @@ package com.cruds.sms.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.cruds.sms.db.CourseDAO;
+import com.cruds.sms.db.CourseDAOImpl;
 import com.cruds.sms.entity.Course;
 
+@Service
 public class CourseService {
 	
-	public static boolean create(Course course)
+	@Autowired
+	CourseDAO courseDAO;
+	
+	public boolean create(Course course)
 	{
-		CourseDAO dao = new CourseDAO();
-		return dao.create(course);
+		//CourseDAOImpl dao = new CourseDAOImpl();
+		return courseDAO.create(course);
 	}
 	
-	public static List<Course> getAllCourse()
+	public  List<Course> getAllCourse()
 	{
-		CourseDAO dao = new CourseDAO();
-		return dao.getAllCourse();
+		//CourseDAOImpl dao = new CourseDAOImpl();
+		return courseDAO.getAllCourse();
 	}	
 	
 	public static boolean delete(int courseid)
 	{
-		CourseDAO dao = new CourseDAO();
+		CourseDAOImpl dao = new CourseDAOImpl();
 		return dao.delete(courseid);
 	}
 

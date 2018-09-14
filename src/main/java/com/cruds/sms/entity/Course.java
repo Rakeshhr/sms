@@ -1,11 +1,24 @@
 package com.cruds.sms.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="course")
 public class Course {
 	
-	
+	@Id
+	@Column
 	private int courseid;
+	
+	@Column
 	private String coursetitle;
+	
+	@Column
 	private String course;
+	
 	public Course(int courseid, String coursetitle, String course) {
 		super();
 		this.courseid = courseid;
