@@ -7,11 +7,11 @@ import com.cruds.sms.entity.Student;
 
 public class StudentService {
 
-	public static boolean create(Student student)
-	{
-		StudentDAOImpl dao = new StudentDAOImpl();
-		return dao.create(student);
-	}
+//	public static boolean create(Student student)
+//	{
+//		StudentDAOImpl dao = new StudentDAOImpl();
+//		return dao.create(student);
+//	}
 	
 	public static List<Student> getAllStudents()
 	{

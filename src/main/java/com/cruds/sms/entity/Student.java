@@ -1,5 +1,8 @@
 package com.cruds.sms.entity;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Student {
 	
 	private String USN;

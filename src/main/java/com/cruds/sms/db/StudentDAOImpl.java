@@ -37,26 +37,26 @@ public class StudentDAOImpl {
 	}
 	
 	
-	public boolean create(Student student)
-	{
-		String sql = "insert into student values(?,?,?)";
-		int rows =0;
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, student.getRollNo());
-			ps.setString(2, student.getFirstName());
-			ps.setString(3, student.getLastName());
-			
-			rows = ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return rows > 0;
-		
-	}
+//	public boolean create(Student student)
+//	{
+//		String sql = "insert into student values(?,?,?)";
+//		int rows =0;
+//		
+//		try(Connection conn = DBConnectionManager.getConnection())
+//		{
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setInt(1, student.getRollNo());
+//			ps.setString(2, student.getFirstName());
+//			ps.setString(3, student.getLastName());
+//			
+//			rows = ps.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return rows > 0;
+//		
+//	}
 
 }
