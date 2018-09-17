@@ -13,15 +13,15 @@ import com.cruds.sms.service.StudentService;
 public class AppController {
 
 	
-//	@RequestMapping(value="/student", method=RequestMethod.GET)
-//	public ModelAndView showStudentForm()
-//	{
-//		System.out.println("Inside Show Student FOrm GET");
-//		ModelAndView mv = new ModelAndView("student", "command", new Student());
-//		mv.addObject("STUDENTLIST", StudentService.getAllStudents());
-//		
-//		return mv;
-//	}
+	@RequestMapping(value="/student", method=RequestMethod.GET)
+	public ModelAndView showStudentForm()
+	{
+		System.out.println("Inside Show Student FOrm GET");
+		ModelAndView mv = new ModelAndView("student", "command", new Student());
+		mv.addObject("STUDENTLIST", StudentService.listStudent());
+		
+		return mv;
+	}
 	
 /*	@RequestMapping(value="/student", method=RequestMethod.POST)
 	public String processStudentForm(@RequestParam("rollNo") int rollNo, @RequestParam("firstName") String firstName,

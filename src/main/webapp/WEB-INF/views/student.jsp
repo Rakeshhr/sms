@@ -7,7 +7,7 @@
 
  <section id="main-content">
       <section class="wrapper">
-	<h1>Student Maintenance</h1>
+	<h1>List Student Based on USN</h1>
 	
 <!-- 	<form action="student.html" method="post"> -->
 <!-- 		<label>Roll No</label><input type="text" name="rollNo"/> -->
@@ -21,15 +21,10 @@
 	
 	
 		<form:form action="student.html" method="post">
-			<form:label path="rollNo">Roll No</form:label>
-			<form:input path="rollNo"/>
-			
-			<form:label path="firstName">First Name</form:label>
-			<form:input path="firstName"/>			
-
-			<form:label path="lastName">Last Name</form:label>
-			<form:input path="lastName"/>		
-			<input type="submit" value="Create"/>
+			<form:label path="USN">USN</form:label>
+			<form:input path="USN"/>
+				
+			<input type="submit" value="Submit"/>
 		
 		</form:form>
 		
@@ -39,9 +34,9 @@
 			<table>
 				<tr>
 					<th>
-						<td>Roll No</td>
-						<td>First Name</td>
-						<td>Last Name</td>
+						<td>Book Title</td>
+						<td>Name</td>
+						<td>Return Date</td>
 					</th>
 				</tr>
 				<c:forEach var="s" items="${STUDENTLIST}">

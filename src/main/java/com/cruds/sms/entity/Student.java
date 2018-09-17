@@ -2,44 +2,31 @@ package com.cruds.sms.entity;
 
 public class Student {
 	
-	private int rollNo;
-	private String firstName;
-	private String lastName;
-	
+	private String USN;
+	private String name;
+	public Student(String uSN, String name) {
+		super();
+		USN = uSN;
+		this.name = name;
+	}
 	public Student() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	public Student(int rollNo, String firstName, String lastName) {
-		super();
-		this.rollNo = rollNo;
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public String getUSN() {
+		return USN;
 	}
-
-	public int getRollNo() {
-		return rollNo;
+	public void setUSN(String uSN) {
+		USN = uSN;
 	}
-
-	public void setRollNo(int rollNo) {
-		this.rollNo = rollNo;
+	public String getName() {
+		return name;
 	}
-
-	public String getFirstName() {
-		return firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	@Override
+	public String toString() {
+		return "Student [USN=" + USN + ", name=" + name + "]";
 	}
 	
 	
