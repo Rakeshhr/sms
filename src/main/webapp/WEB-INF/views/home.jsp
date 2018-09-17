@@ -36,6 +36,19 @@
       		<a href="home.html" class="logo">CRUDS <span class="lite">INFOTECH</span></a>
       		<!--logo end-->
      <div class="top-nav notification-row">
+     
+      <div class="nav search-row" id="top_menu">
+        <!--  search form start -->
+        <ul class="nav top-menu">
+          <li>
+            <form class="navbar-form">
+            <span>Search here</span>
+              <input class="form-control" placeholder="Search" type="text">
+            </form>
+          </li>
+        </ul>
+        <!--  search form end -->
+      </div>
         	
         <ul class="nav pull-right top-menu">
         	
@@ -64,7 +77,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
        <ul class="sidebar-menu">
-        <li class="active">
+        	<li class="active">
             <a class="" href="book.html">
                           <i class="icon_house_alt"></i>
                           <span>Add a Book</span>
@@ -82,12 +95,12 @@
                           <span>course</span>
             </a>
 		</li>
-
+		
+		 
         </ul>
       </div>
     </aside>
     </section>
-    
 
 </body>
 </html>

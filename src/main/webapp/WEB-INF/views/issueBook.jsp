@@ -35,31 +35,21 @@
 				  	<form:form class="form-validate form-horizontal" action="issueBook.html" method="post" >
 				  	
 				  	<div class="form-group ">
-                      <form:label path="USN" class="control-label col-lg-2">USN <span class="required">*</span></form:label>
+                      <form:label path="USN" class="control-label col-lg-2">student <span class="required">*</span></form:label>
                       <div class="col-lg-5">
-                        <form:input path="USN" class="form-control" minlength="5" maxlength="25" required="true"/>
+                        <form:input path="USN" class="form-control" minlength="3" maxlength="25" required="true"/>
+                        <a href="student.html"><i class="fa fa-search"></i></a>
                       </div>
                     </div>
 				  	
-				  	<div class="form-group ">
-                      <form:label path="issueDate" class="control-label col-lg-2">Issued Date <span class="required">*</span></form:label>
-                      <div class="col-lg-5">
-                        <form:input path="issueDate" class="form-control" minlength="5" maxlength="25" required="true"/>	
-                      </div>
-                    </div>
-				  	<div class="form-group ">
-                      <form:label path="returnDate" class="control-label col-lg-2">Return Date <span class="required">*</span></form:label>
-                      <div class="col-lg-5">
-                        <form:input path="returnDate" class="form-control" minlength="5" maxlength="25" required="true"/>	
-                      </div>
-                    </div>
-				  
+				  	
                     	<div class="form-group ">
-                      <form:label path="ISBN" class="control-label col-lg-2">ISBN <span class="required">*</span></form:label>
+                      <form:label path="ISBN" class="control-label col-lg-2">book title <span class="required">*</span></form:label>
                       <div class="col-lg-5">
                         <form:input path="ISBN" class="form-control" minlength="5" maxlength="25" required="true"/>
+                        <a href="book.html"><i class="fa fa-search"></i></a>
                       </div>
-                    </div> 
+                    </div>
                     
           
 					<div class="form-group">
@@ -69,8 +59,6 @@
                       </div>
                     </div>							
 									
-							
-						
 				</form:form>
                 </div>
 
