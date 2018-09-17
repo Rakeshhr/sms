@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cruds.sms.entity.Student;
 import com.cruds.sms.entity.User;
-
+import com.cruds.sms.service.StudentService;
 import com.cruds.sms.service.UserService;
 @Controller
 @SessionAttributes("USER")
@@ -27,22 +29,44 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value="/checklogin",method=RequestMethod.POST)
-	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,RedirectAttributes redirectAttributes, ModelMap model,HttpSession session)
+	@RequestMapping(value="/student", method=RequestMethod.GET)
+	public ModelAndView showStudentForm()
 	{
+		System.out.println("Inside Show Student FOrm GET");
+		ModelAndView mv = new ModelAndView("student", "command", new Student());
+		mv.addObject("STUDENTLIST", StudentService.getAllStudents());
 		
-			boolean user = UserService.authenticateUser(username, password);
-			if(user)
+		return mv;
+	}
+	
+	@RequestMapping(value="/checklogin",method=RequestMethod.POST)
+	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("type") String type,RedirectAttributes redirectAttributes, ModelMap model,HttpSession session)
+	{
+			
+			boolean user = UserService.authenticateUser(username, password,type);
+			
+			if(user && type.equals("Student"))
 			{
 				session.setAttribute("uname",username);
 				model.addAttribute("USER", user);
-				return "home";
+				return "redirect:student.html";
+			}
+			
+			if(user && type.equals("Librarian"))
+			{
+				if(user)
+				{
+					session.setAttribute("uname",username);
+					model.addAttribute("USER", user);
+					return "home";
+				}
 			}
 			else
 			{
 				redirectAttributes.addAttribute("error", "Invalid username and password!");
 				return "redirect:login";
 			}
+			return "asxx";
 		
 	}
 	

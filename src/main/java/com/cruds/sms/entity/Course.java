@@ -46,6 +46,10 @@ public class Course {
 	public Course() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Course [courseid=" + courseid + ", coursetitle=" + coursetitle + ", course=" + course + "]";
+	}
 	
 	
 }

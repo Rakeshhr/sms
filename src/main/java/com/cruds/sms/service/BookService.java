@@ -2,28 +2,34 @@ package com.cruds.sms.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.cruds.sms.db.BookDAO;
+import com.cruds.sms.db.BookDAOImpl;
 import com.cruds.sms.entity.Book;
 
 
-
+@Service
 public class BookService {
+	@Autowired
+	BookDAO bookDAO;
 
 	
-	public static boolean create(Book book)
+	public boolean create(Book book)
 	{
-		BookDAO dao = new BookDAO();
-		return dao.create(book);
+		//BookDAOImpl dao = new BookDAOImpl();
+		return bookDAO.create(book);
 	}
 	
 	public static List<Book> getAllBook()
 	{
-		BookDAO dao = new BookDAO();
+		BookDAOImpl dao = new BookDAOImpl();
 		return dao.getAllBook();
 	}
 	public static boolean delete(int ISBN)
 	{
-		BookDAO dao = new BookDAO();
+		BookDAOImpl dao = new BookDAOImpl();
 		return dao.delete(ISBN);
 	}
 }

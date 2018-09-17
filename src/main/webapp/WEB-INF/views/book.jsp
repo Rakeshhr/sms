@@ -35,18 +35,27 @@
                         <form:input path="title" class="form-control"  required="true"/>	
                       </div>
                     </div>
-				  	<div class="form-group ">
-                      <form:label path="price" class="control-label col-lg-2">Price <span class="required">*</span></form:label>
-                      <div class="col-lg-5">
-                        <form:input path="price" class="form-control"  required="true"/>	
-                      </div>
-                    </div>
+				  	
 				  	<div class="form-group ">
                       <form:label path="category" class="control-label col-lg-2">Category <span class="required">*</span></form:label>
                       <div class="col-lg-5">
                         <form:input path="category" class="form-control"  required="true"/>
                       </div>
-                    </div>                                        							
+                    </div>     
+                    
+                    <div class="form-group ">
+                      <form:label path="authorName" class="control-label col-lg-2">Author Name <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="authorName" class="form-control"  required="true"/>
+                      </div>
+                    </div>               
+                    
+                    <div class="form-group ">
+                      <form:label path="mailID" class="control-label col-lg-2">Author MailID <span class="required">*</span></form:label>
+                      <div class="col-lg-5">
+                        <form:input path="mailID" class="form-control"  required="true"/>
+                      </div>
+                    </div>                                 							
 							
 					<div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
@@ -80,18 +89,20 @@
                 <thead>
                   <tr>
                     <th>ISBN</th>
-                    <th>Title</th>
-                    <th>Price</th>
-		    		<th>Category</th>
+                    <th>Category</th>
+		    		<th>Title</th>
+		    		<th>Author Name</th>
+		    		<th>Author MailID</th>
                   </tr>
                 </thead>
                 <tbody>
                  <c:forEach var="s" items="${BOOKLIST}">
 					<tr>
 						<td> <c:out value="${s.ISBN}"/> </td>
-						<td><c:out value="${s.title}"/></td>
-						<td><c:out value="${s.price}"/></td>
 						<td><c:out value="${s.category}"/></td>
+						<td><c:out value="${s.title}"/></td>
+						<td><c:out value="${s.authorName}"/></td>
+						<td><c:out value="${s.mailID}"/></td>
 						<td><a href="<c:url value='/bookdel-${s.ISBN}'/>">Delete</a></td>
 					</tr>
 				</c:forEach>

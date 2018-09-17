@@ -65,15 +65,15 @@
         <!-- sidebar menu start-->
        <ul class="sidebar-menu">
         <li class="active">
-            <a class="" href="student.html">
+            <a class="" href="book.html">
                           <i class="icon_house_alt"></i>
-                          <span>Student</span>
+                          <span>Add a Book</span>
             </a>
             </li>
 			<li>		  
-			<a class="" href="book.html">
+			<a class="" href="issueBook.html">
                           <i class="icon_book_alt"></i>
-                          <span>book</span>
+                          <span>Issue Book</span>
             </a>
             </li>
             <li>

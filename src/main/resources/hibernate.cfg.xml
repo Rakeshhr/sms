@@ -7,6 +7,8 @@
 
 	<property name="hbm2ddl.auto">update</property>
 	<mapping class="com.cruds.sms.entity.Course" />
+	<mapping class="com.cruds.sms.entity.Book" />
+	<mapping class="com.cruds.sms.entity.BookIssue" />
         
 </session-factory>
 

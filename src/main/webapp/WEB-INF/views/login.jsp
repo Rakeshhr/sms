@@ -1,4 +1,4 @@
-
+<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+  <title>Login Page </title>
 
   <!-- Bootstrap CSS -->
   <link href="static/css/bootstrap.min.css" rel="stylesheet">
@@ -56,6 +56,13 @@
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
           <input name="password" type="password" class="form-control" placeholder="Password">
 
+        </div>
+       <div class="form-group">
+       <label class="control-label col-lg-2" for="inputSuccess">Type</label>
+        <select class="form-control m-bot15" name="type">
+              <option>Student</option>
+              <option>Librarian</option>
+        </select>
         </div>
         <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me

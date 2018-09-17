@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="home.jsp" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -18,10 +19,11 @@
   <link href="static/css/style.css" rel="stylesheet">
   <link href="static/css/style-responsive.css" rel="stylesheet" />
 
-<title>SignUp Page</title>
+<title>Issue Book Page</title>
 </head>
 <body>
-
+	 <section id="main-content">
+      <section class="wrapper">
 	 <div class="row">
           <div class="col-lg-12">
             <section class="panel">
@@ -30,49 +32,36 @@
               </header>
               <div class="panel-body">
                 <div class="form">
-				  	<form:form class="form-validate form-horizontal" action="createuser.html" method="post" modelAttribute="user">
+				  	<form:form class="form-validate form-horizontal" action="issueBook.html" method="post" >
 				  	
 				  	<div class="form-group ">
-                      <form:label path="firstName" class="control-label col-lg-2">FirstName <span class="required">*</span></form:label>
+                      <form:label path="USN" class="control-label col-lg-2">USN <span class="required">*</span></form:label>
                       <div class="col-lg-5">
-                        <form:input path="firstName" class="form-control" minlength="5" maxlength="25" required="true"/>
+                        <form:input path="USN" class="form-control" minlength="5" maxlength="25" required="true"/>
                       </div>
                     </div>
 				  	
 				  	<div class="form-group ">
-                      <form:label path="lastName" class="control-label col-lg-2">LastName <span class="required">*</span></form:label>
+                      <form:label path="issueDate" class="control-label col-lg-2">Issued Date <span class="required">*</span></form:label>
                       <div class="col-lg-5">
-                        <form:input path="lastName" class="form-control" minlength="5" maxlength="25" required="true"/>	
+                        <form:input path="issueDate" class="form-control" minlength="5" maxlength="25" required="true"/>	
                       </div>
                     </div>
 				  	<div class="form-group ">
-                      <form:label path="email" class="control-label col-lg-2">Email <span class="required">*</span></form:label>
+                      <form:label path="returnDate" class="control-label col-lg-2">Return Date <span class="required">*</span></form:label>
                       <div class="col-lg-5">
-                        <form:input path="email" class="form-control" minlength="5" maxlength="25" required="true"/>	
+                        <form:input path="returnDate" class="form-control" minlength="5" maxlength="25" required="true"/>	
                       </div>
                     </div>
-				  	<div class="form-group ">
-                      <form:label path="mobNo" class="control-label col-lg-2">MobNo <span class="required">*</span></form:label>
-                      <div class="col-lg-5">
-                        <form:input path="mobNo" class="form-control" minlength="5" maxlength="25" required="true"/>
-                      </div>
-                    </div> 
+				  
                     	<div class="form-group ">
-                      <form:label path="password" class="control-label col-lg-2">Password <span class="required">*</span></form:label>
+                      <form:label path="ISBN" class="control-label col-lg-2">ISBN <span class="required">*</span></form:label>
                       <div class="col-lg-5">
-                        <form:input path="password" class="form-control" minlength="5" maxlength="25" required="true"/>
+                        <form:input path="ISBN" class="form-control" minlength="5" maxlength="25" required="true"/>
                       </div>
                     </div> 
                     
-                    <div class="form-group ">
-                      <form:label path="type" class="control-label col-lg-2">Type <span class="required">*</span></form:label>
-                      <div class="col-lg-5">
-                        <form:input path="type" class="form-control" minlength="5" maxlength="25" required="true"/>
-                      </div>
-                    </div>                                                 							
-							
-					
-					
+          
 					<div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" type="submit">Save</button>
@@ -89,7 +78,8 @@
             </section>
           </div>
         </div>	
-	
+	</section>
+	</section>
 
 </body>
 </html>

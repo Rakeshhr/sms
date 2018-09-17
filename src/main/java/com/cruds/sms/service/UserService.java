@@ -9,10 +9,10 @@ public class UserService {
 		UserDAO dao = new UserDAO();
 		return dao.createUser(user);
 	}
-	public static boolean authenticateUser(String firstName,String password)
+	public static boolean authenticateUser(String firstName,String password,String type)
 	{
 		UserDAO dao = new UserDAO();
-		return dao.authenticateUser(firstName,password);
+		return dao.authenticateUser(firstName,password,type);
 	}
 
 }

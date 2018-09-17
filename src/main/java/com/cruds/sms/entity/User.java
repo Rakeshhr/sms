@@ -7,14 +7,19 @@ public class User {
 	private String email;
 	private String mobNo;
 	private String password;
-	public User(String firstName, String lastName, String email, String mobNo, String password) {
+	private String type;
+	
+	public User(String firstName, String lastName, String email, String mobNo, String password, String type) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.mobNo = mobNo;
 		this.password = password;
+		this.type = type;
 	}
+
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -44,6 +49,13 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public User() {
 		super();
