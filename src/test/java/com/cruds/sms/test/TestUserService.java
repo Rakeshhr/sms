@@ -27,7 +27,8 @@ public class TestUserService {
 	@Test
 	public void authenticatePass()
 	{
-		boolean result = UserService.authenticateUser("rakesh", "1234","student");
+		User user = new User("Sada", "Rud", "sada@gmail.com", "1234", "xyz","dwda"); 
+		boolean result = UserService.authenticateUser("Sada", "xyz","dwda");
 		assertTrue(result);
 	}
 	
