@@ -64,6 +64,7 @@
                       </div>
                     </div> 
                     
+
                     <div class="form-group ">
                       <form:label path="type" class="control-label col-lg-2">Type <span class="required">*</span></form:label>
 					      
@@ -74,9 +75,8 @@
 					        </select>
 					        
                     </div>                                                 							
-							
-					
-					
+
+                   
 					<div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" type="submit">Save</button>
