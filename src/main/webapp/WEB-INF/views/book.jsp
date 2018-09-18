@@ -22,12 +22,6 @@
                 <div class="form">
 				  	<form:form class="form-validate form-horizontal" action="book.html" method="post">
 				  	
-				  	<div class="form-group ">
-                      <form:label path="ISBN" class="control-label col-lg-2">ISBN <span class="required">*</span></form:label>
-                      <div class="col-lg-5">
-                        <form:input path="ISBN" class="form-control"  required="true"/>
-                      </div>
-                    </div>
 				  	
 				  	<div class="form-group ">
                       <form:label path="title" class="control-label col-lg-2">Title <span class="required">*</span></form:label>
@@ -89,10 +83,11 @@
                 <thead>
                   <tr>
                     <th>ISBN</th>
-                    <th>Category</th>
-		    		<th>Title</th>
+                    <th>Title</th>
+		    		<th>Category</th>
 		    		<th>Author Name</th>
 		    		<th>Author MailID</th>
+		    		<th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -103,7 +98,7 @@
 						<td><c:out value="${s.title}"/></td>
 						<td><c:out value="${s.authorName}"/></td>
 						<td><c:out value="${s.mailID}"/></td>
-						<td><a href="<c:url value='/bookdel-${s.ISBN}'/>">Delete</a></td>
+<%-- 						<td><a href="<c:url value='/bookdel-${s.ISBN}'/>">Delete</a></td> --%>
 					</tr>
 				</c:forEach>
                 </tbody>

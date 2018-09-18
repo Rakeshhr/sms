@@ -66,9 +66,13 @@
                     
                     <div class="form-group ">
                       <form:label path="type" class="control-label col-lg-2">Type <span class="required">*</span></form:label>
-                      <div class="col-lg-5">
-                        <form:input path="type" class="form-control" minlength="5" maxlength="25" required="true"/>
-                      </div>
+					      
+					       <label class="control-label col-lg-2" for="inputSuccess">Type</label>
+					        <select class="form-control m-bot15" name="type">
+					              <option>Student</option>
+					              <option>Librarian</option>
+					        </select>
+					        
                     </div>                                                 							
 							
 					

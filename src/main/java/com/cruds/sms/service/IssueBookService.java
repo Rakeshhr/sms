@@ -10,9 +10,9 @@ import com.cruds.sms.entity.BookIssue;
 public class IssueBookService {
 	@Autowired
 	IssueBookDAO issueDOA;
-	public boolean issue(BookIssue book)
+	public boolean issue(String USN,int ISBN)
 	{
 		//BookDAOImpl dao = new BookDAOImpl();
-		return issueDOA.issuebook(book);
+		return issueDOA.issuebook(USN,ISBN);
 	}
 }

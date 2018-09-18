@@ -4,5 +4,5 @@ import com.cruds.sms.entity.BookIssue;
 
 public interface IssueBookDAO {
 	
-	public boolean issuebook(BookIssue book);
+	public boolean issuebook(String USN,int ISBN);
 }

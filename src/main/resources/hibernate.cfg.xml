@@ -9,6 +9,7 @@
 	<mapping class="com.cruds.sms.entity.Course" />
 	<mapping class="com.cruds.sms.entity.Book" />
 	<mapping class="com.cruds.sms.entity.BookIssue" />
+	<mapping class="com.cruds.sms.entity.Author" />
         
 </session-factory>
 

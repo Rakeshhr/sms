@@ -77,9 +77,9 @@
             </a>
             </li>
             <li>
-			<a class="" href="course.html">
+			<a class="" href="search.html">
                           <i class="icon_book_alt"></i>
-                          <span>course</span>
+                          <span>Search a Book</span>
             </a>
 		</li>
 

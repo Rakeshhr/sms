@@ -29,6 +29,15 @@ public class BookIssue {
 		this.returnDate = returnDate;
 		ISBN = iSBN;
 	}
+	
+	public BookIssue(String uSN, String issueDate, String returnDate, int iSBN) {
+		super();
+		USN = uSN;
+		this.issueDate = issueDate;
+		this.returnDate = returnDate;
+		ISBN = iSBN;
+	}
+
 	public BookIssue() {
 		super();
 	}

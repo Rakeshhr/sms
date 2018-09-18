@@ -1,15 +1,18 @@
 package com.cruds.sms.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "book")
-@SecondaryTable(name="author")
 public class Book {
 	@Id
 	@GeneratedValue
@@ -18,29 +21,19 @@ public class Book {
 	private String title;
 	@Column
 	private String category;
+	@OneToMany(targetEntity=Author.class,mappedBy="book",cascade=CascadeType.ALL)
+	private List<Author> author;
 	
-	@Column(table="author")
-	private String authorName;
-	@Column(table="author")
-	private String mailID;
-	public Book(int iSBN, String title, String category, String authorName, String mailID) {
+	public Book(int iSBN, String title, String category, List<Author> author) {
 		super();
 		ISBN = iSBN;
 		this.title = title;
 		this.category = category;
-		this.authorName = authorName;
-		this.mailID = mailID;
+		this.author = author;
 	}
-	
-	public Book(int iSBN, String title, String category) {
-		super();
-		ISBN = iSBN;
-		this.title = title;
-		this.category = category;
-	}
-
 	public Book() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public int getISBN() {
 		return ISBN;
@@ -60,29 +53,17 @@ public class Book {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getAuthorName() {
-		return authorName;
+	
+	public List<Author> getAuthor() {
+		return author;
 	}
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
-	}
-	public String getMailID() {
-		return mailID;
-	}
-	public void setMailID(String mailID) {
-		this.mailID = mailID;
+	public void setAuthor(List<Author> author) {
+		this.author = author;
 	}
 	@Override
 	public String toString() {
-		return "Book [ISBN=" + ISBN + ", title=" + title + ", category=" + category + ", authorName=" + authorName
-				+ ", mailID=" + mailID + "]";
+		return "Book [ISBN=" + ISBN + ", title=" + title + ", category=" + category + ", author=" + author + "]";
 	}
 	
 	
-	
-	
-	
-	
-	
-
 }

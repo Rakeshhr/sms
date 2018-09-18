@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cruds.sms.entity.Book;
+import com.cruds.sms.entity.FormBean;
 
 public class BookDAOImpl {
 	
-	public List<Book> getAllBook()
+	public List<FormBean> getAllBook()
 	{
-		String sql = "select Book.ISBN,Book.category,Book.title,Author.authorName,Author.mailID from Book inner join Author where Book.ISBN=Author.ISBN";
-		List<Book> list = new ArrayList<>();
-		Book s = null;
+		String sql = "select Book.ISBN,Book.category,Book.title,Author.authorName,Author.mailID from Book inner join Author where Book.ISBN=Author.BOOK_ISBN";
+		List<FormBean> list = new ArrayList<>();
+		FormBean s = null;
 		
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
@@ -24,7 +25,7 @@ public class BookDAOImpl {
 			
 			while(rs != null && rs.next())
 			{
-				s = new Book(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+				s = new FormBean(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
 				list.add(s);
 			}
 			
@@ -45,8 +46,7 @@ public class BookDAOImpl {
 			ps.setInt(1, book.getISBN());
 			ps.setString(2, book.getTitle());
 			ps.setString(3, book.getCategory());
-			ps.setString(4, book.getAuthorName());
-			ps.setString(5, book.getMailID());
+			
 			
 			
 			rows = ps.executeUpdate();

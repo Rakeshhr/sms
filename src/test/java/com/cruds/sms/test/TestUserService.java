@@ -2,18 +2,22 @@ package com.cruds.sms.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.cruds.sms.entity.Author;
 import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.User;
 import com.cruds.sms.service.BookService;
+import com.cruds.sms.service.IssueBookService;
 import com.cruds.sms.service.UserService;
 
 public class TestUserService {
 
 	@Test
-	@Ignore
 	public void testCreate() {
 		
 		User user = new User("Sada", "Rud", "sada@gmail.com", "1234", "xyz","dwda");
@@ -44,10 +48,25 @@ public class TestUserService {
 	@Test
 	public void addBook()
 	{
-		Book book = new Book(112,"Test","Test","rame","adasdad");
+		Book book = new Book();
+		book.setTitle("srfs");
+		book.setCategory("sesfs");
+		
+		Author author = new Author();
+		author.setAuthorName("sdsd");
+		author.setMailID("aed");
+		author.setBook(book);
 		BookService bookser=new BookService();
-		boolean createResult = bookser.create(book);
+		boolean createResult = bookser.create(book,author);
+		
 		assertTrue(createResult);
+	}
+	@Test
+	public void issueBook1()
+	{
+		IssueBookService is = new IssueBookService();
+		boolean res = is.issue("SMS1",1);
+		assertTrue(res);
 	}
 	
 
