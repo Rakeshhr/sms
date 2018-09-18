@@ -47,9 +47,9 @@ public class CourseDAOImpl {
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(0, "%" + key + "%");
 			ps.setString(1, "%" + key + "%");
 			ps.setString(2, "%" + key + "%");
+			ps.setString(3, "%" + key + "%");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs != null && rs.next())

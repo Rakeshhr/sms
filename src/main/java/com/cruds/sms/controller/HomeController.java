@@ -86,10 +86,11 @@ public class HomeController {
 	@RequestMapping(value="/search",method=RequestMethod.POST)
 	public ModelAndView searchBook(@RequestParam("searchKey") String key)
 	{
+		CourseDAOImpl dao = new CourseDAOImpl();
 		key1=key;
 		System.out.println(key1);
 		ModelAndView mv = new ModelAndView("search", "command", new FormBean());
-		mv.addObject("LIST",bookService.search(key));
+		mv.addObject("LIST",dao.search(key));
 		return mv;
 	}
 	
