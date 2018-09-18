@@ -27,9 +27,7 @@
 	 <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">
-                SignUp Page
-              </header>
+              
               <div class="panel-body">
                 <div class="form">
 				  	<form:form class="form-validate form-horizontal" action="issueBook.html" method="post" >

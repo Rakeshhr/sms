@@ -1,5 +1,6 @@
 package com.cruds.sms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cruds.sms.db.CourseDAOImpl;
 import com.cruds.sms.entity.Author;
 import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.BookIssue;
@@ -21,6 +23,8 @@ import com.cruds.sms.service.IssueBookService;
 
 @Controller
 public class HomeController {
+	
+	public String key1;
 	
 	@Autowired
 	private BookService bookService;
@@ -74,16 +78,19 @@ public class HomeController {
 		return "redirect:issueBook.html";
 	}
 	@RequestMapping(value="/search",method=RequestMethod.GET)
-	public ModelAndView searchBook()
+	public String searchBook()
 	{
-		ModelAndView mv = new ModelAndView("search", "command", new FormBean());
-		return mv;
+		
+		return "search";
 	}
 	@RequestMapping(value="/search",method=RequestMethod.POST)
-	public String searchBook(@RequestParam("searchKey") String key)
+	public ModelAndView searchBook(@RequestParam("searchKey") String key)
 	{
-		bookService.search(key);
-		return "redirect:issueBook.html";
+		key1=key;
+		System.out.println(key1);
+		ModelAndView mv = new ModelAndView("search", "command", new FormBean());
+		mv.addObject("LIST",bookService.search(key));
+		return mv;
 	}
 	
 	

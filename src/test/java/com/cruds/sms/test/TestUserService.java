@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cruds.sms.entity.Author;
 import com.cruds.sms.entity.Book;
@@ -16,6 +17,8 @@ import com.cruds.sms.service.IssueBookService;
 import com.cruds.sms.service.UserService;
 
 public class TestUserService {
+	@Autowired
+	private BookService bookService;
 
 	@Test
 	public void testCreate() {
@@ -48,6 +51,7 @@ public class TestUserService {
 	@Test
 	public void addBook()
 	{
+		
 		Book book = new Book();
 		book.setTitle("srfs");
 		book.setCategory("sesfs");
@@ -56,8 +60,8 @@ public class TestUserService {
 		author.setAuthorName("sdsd");
 		author.setMailID("aed");
 		author.setBook(book);
-		BookService bookser=new BookService();
-		boolean createResult = bookser.create(book,author);
+		
+		boolean createResult = bookService.create(book,author);
 		
 		assertTrue(createResult);
 	}
@@ -68,6 +72,7 @@ public class TestUserService {
 		boolean res = is.issue("SMS1",1);
 		assertTrue(res);
 	}
+	
 	
 
 }
