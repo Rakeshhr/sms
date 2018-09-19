@@ -18,7 +18,7 @@
 				 
 				 	<div class="form-group ">
                       
-                        Search by Boot Title or category or Author Name<input class="form-control" name="searchKey" maxlength="25" required="true" />
+                        Search by Book Title or category or Author Name<input class="form-control" name="searchKey"  required="true" />
                       
                     </div>
                     
@@ -41,7 +41,7 @@
         
         <div class="row">
     
-<%-- 		<c:if test="${not empty LIST}"/> --%>
+ 		<c:if test="${not empty LIST}"/> 
 
 		<div class="col-sm-6">
             <section class="panel">

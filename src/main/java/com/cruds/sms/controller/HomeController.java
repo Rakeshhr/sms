@@ -18,13 +18,15 @@ import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.BookIssue;
 import com.cruds.sms.entity.Course;
 import com.cruds.sms.entity.FormBean;
+import com.cruds.sms.entity.Student;
 import com.cruds.sms.service.BookService;
 import com.cruds.sms.service.IssueBookService;
 
 @Controller
 public class HomeController {
 	
-	public String key1;
+	public int ISBN;
+	public String USN;
 	
 	@Autowired
 	private BookService bookService;
@@ -56,14 +58,18 @@ public class HomeController {
 		bookService.create(book,author);
 		return "redirect:book.html";
 	}
-//	@RequestMapping(value={"/bookdel-{ISBN}"}, method=RequestMethod.GET)
-//	public String deleteBookForm(@PathVariable("ISBN") int ISBN)
-//	{
-//		//System.out.println(book.getISBN() + ":" + book.getTitle() + ":" + book.getPrice() + ":" + book.getCategory());
-//		System.out.println("HII" + ISBN);
-//		BookService.delete(ISBN);
-//		return "redirect:addBook.html";
-//	}
+	@RequestMapping(value={"/book1-{ISBN}"}, method=RequestMethod.GET)
+	public String storeISBN(@PathVariable("ISBN") int ISBn)
+	{
+		ISBN = ISBn;
+		return "redirect:issueBook.html";
+	}
+	@RequestMapping(value={"/book2-{USN}"}, method=RequestMethod.GET)
+	public String storeUSN(@PathVariable("USN") String USn)
+	{
+		USN = USn;
+		return "redirect:issueBook.html";
+	}
 	
 	@RequestMapping(value="/issueBook",method=RequestMethod.GET)
 	public ModelAndView issueBook()
@@ -72,9 +78,9 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value="/issueBook",method=RequestMethod.POST)
-	public String issueBook1(@RequestParam("USN") String usn ,@RequestParam("ISBN") int isbn )
+	public String issueBook1()
 	{
-		issueSer.issue(usn,isbn);
+		issueSer.issue(USN,ISBN);
 		return "redirect:issueBook.html";
 	}
 	@RequestMapping(value="/search",method=RequestMethod.GET)
@@ -87,10 +93,39 @@ public class HomeController {
 	public ModelAndView searchBook(@RequestParam("searchKey") String key)
 	{
 		CourseDAOImpl dao = new CourseDAOImpl();
-		key1=key;
-		System.out.println(key1);
 		ModelAndView mv = new ModelAndView("search", "command", new FormBean());
 		mv.addObject("LIST",dao.search(key));
+		return mv;
+	}
+	@RequestMapping(value="/searchUSN",method=RequestMethod.GET)
+	public String searchUSN()
+	{
+		
+		return "issueBook";
+	}
+	@RequestMapping(value="/searchUSN",method=RequestMethod.POST)
+	public ModelAndView searchUSN(@RequestParam("searchKey2") String key)
+	{
+		CourseDAOImpl dao = new CourseDAOImpl();
+		ModelAndView mv = new ModelAndView("issueBook", "command", new Student());
+		mv.addObject("LIST1",dao.searchUSN(key));
+		return mv;
+	}
+	@RequestMapping(value="/searchBook",method=RequestMethod.GET)
+	public String BookSearch()
+	{
+		
+		return "issueBook";
+	}
+	
+	
+	@RequestMapping(value="/searchBook",method=RequestMethod.POST)
+	public ModelAndView handleBookSearch(@RequestParam("searchKey1") String key)
+	{
+		System.out.println("Search==>" + key);
+		CourseDAOImpl dao = new CourseDAOImpl();
+		ModelAndView mv = new ModelAndView("issueBook", "command", new FormBean());
+		mv.addObject("LIST2",dao.searchBook(key));
 		return mv;
 	}
 	

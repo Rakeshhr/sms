@@ -37,7 +37,7 @@ public class BookDAOImpl {
 	}
 	public boolean create(Book book)
 	{
-		String sql = "insert into book values(?,?,?,?,?,?)";
+		String sql = "insert into book values(?,?,?)";
 		int rows =0;
 		
 		try(Connection conn = DBConnectionManager.getConnection())
