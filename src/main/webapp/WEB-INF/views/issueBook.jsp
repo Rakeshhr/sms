@@ -137,14 +137,14 @@
           </div>
 	</div>
                     
-          
+         <form action="issueBook.html" method="post">
 					<div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <a href="issueBook.html" class="btn btn-default" type="button">Submit</a>
+                        <button class="btn btn-primary" type="submit">Save</button>
                         <a href="cancel.html" class="btn btn-default" type="button">Cancel</a>
                       </div>
                     </div>							
-									
+					</form>				
                 </div>
 
               </div>

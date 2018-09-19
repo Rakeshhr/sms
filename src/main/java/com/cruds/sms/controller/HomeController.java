@@ -3,6 +3,9 @@ package com.cruds.sms.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -59,15 +62,20 @@ public class HomeController {
 		return "redirect:book.html";
 	}
 	@RequestMapping(value={"/book1-{ISBN}"}, method=RequestMethod.GET)
-	public String storeISBN(@PathVariable("ISBN") int ISBn)
+	public String storeISBN(@PathVariable("ISBN") int ISBn,HttpSession session)
 	{
-		ISBN = ISBn;
+		//ISBN = ISBn;
+		//System.out.println(ISBN);
+		session.setAttribute("isbn", ISBn);
 		return "redirect:issueBook.html";
 	}
 	@RequestMapping(value={"/book2-{USN}"}, method=RequestMethod.GET)
-	public String storeUSN(@PathVariable("USN") String USn)
+	public String storeUSN(@PathVariable("USN") String USn,HttpSession session)
 	{
 		USN = USn;
+		System.out.println(USN);
+		session.setAttribute("usn", USn);
+		String USN=(String)session.getAttribute("usn");
 		return "redirect:issueBook.html";
 	}
 	
@@ -78,9 +86,15 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value="/issueBook",method=RequestMethod.POST)
-	public String issueBook1()
+	public String issueBook1(HttpSession session)
 	{
+		String USN=(String)session.getAttribute("usn");
+		System.out.println(USN);
+		int ISBN = (Integer)session.getAttribute("isbn");
+		System.out.println(ISBN);
 		issueSer.issue(USN,ISBN);
+		session.removeAttribute("usn");
+		session.removeAttribute("isbn");
 		return "redirect:issueBook.html";
 	}
 	@RequestMapping(value="/search",method=RequestMethod.GET)
