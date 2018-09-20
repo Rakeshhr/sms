@@ -1,14 +1,12 @@
 package com.cruds.sms.entity;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SecondaryTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,20 +15,18 @@ public class Book {
 	@Id
 	@GeneratedValue
 	private int ISBN;
+	
 	@Column
 	private String title;
+	
 	@Column
 	private String category;
-	@OneToMany(targetEntity=Author.class,mappedBy="book",cascade=CascadeType.ALL)
-	private List<Author> author;
 	
-	public Book(int iSBN, String title, String category, List<Author> author) {
-		super();
-		ISBN = iSBN;
-		this.title = title;
-		this.category = category;
-		this.author = author;
-	}
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="auth_id")
+	private Author author;
+	
+	
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -54,10 +50,11 @@ public class Book {
 		this.category = category;
 	}
 	
-	public List<Author> getAuthor() {
+
+	public Author getAuthor() {
 		return author;
 	}
-	public void setAuthor(List<Author> author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 	@Override

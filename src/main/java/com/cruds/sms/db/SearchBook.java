@@ -21,7 +21,7 @@ public class SearchBook implements SearchDAO {
 	public List<FormBean> searchBook(String searchKey) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		String hql = "select Book.ISBN,Book.title,Book.category,Author.authorName,Author.mailID from Book inner join Author on Book.ISBN=Author.Book_ISBN where title LIKE ? or category LIKE ? or authorName LIKE ?";
+		String hql = "select Book.ISBN,Book.title,Book.category,Author.authorName,Author.mailID from Book inner join Author on Book.auth_id=Author.auth_id where title LIKE ? or category LIKE ? or authorName LIKE ?";
 		
 		Query query = session.createQuery(hql);
 		query.setString(0, "%"+searchKey+"%");

@@ -5,7 +5,9 @@ import com.cruds.sms.entity.Book;
 
 public interface BookDAO {
 
+	@Deprecated
 	 public boolean create(Book book,Author author);
+	 public boolean create(Book book);
 	 
 	
 }

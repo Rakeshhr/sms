@@ -87,7 +87,7 @@
 				 
 				 	<div class="form-group ">
                       
-                        Search by Book Title or category or Author Name<input class="form-control" name="searchKey2"  required="true" />
+                        Search by Student Name<input class="form-control" name="searchKey2"  required="true" />
                       
                     </div>
                     

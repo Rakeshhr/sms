@@ -1,11 +1,10 @@
 package com.cruds.sms.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,7 +18,7 @@ import com.cruds.sms.db.CourseDAOImpl;
 import com.cruds.sms.entity.Author;
 import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.BookIssue;
-import com.cruds.sms.entity.Course;
+
 import com.cruds.sms.entity.FormBean;
 import com.cruds.sms.entity.Student;
 import com.cruds.sms.service.BookService;
@@ -50,22 +49,21 @@ public class HomeController {
 	{
 		
 		Book book = new Book();
-		book.setISBN(bean.getISBN());
+		//book.setISBN(bean.getISBN());
 		book.setTitle(bean.getTitle());
 		book.setCategory(bean.getCategory());
 		Author author = new Author();
 		author.setAuthorName(bean.getAuthorName());
 		author.setMailID(bean.getMailID());
-		author.setBook(book);
+	
+		book.setAuthor(author);
 		
-		bookService.create(book,author);
+		bookService.create(book);
 		return "redirect:book.html";
 	}
 	@RequestMapping(value={"/book1-{ISBN}"}, method=RequestMethod.GET)
 	public String storeISBN(@PathVariable("ISBN") int ISBn,HttpSession session)
 	{
-		//ISBN = ISBn;
-		//System.out.println(ISBN);
 		session.setAttribute("isbn", ISBn);
 		return "redirect:issueBook.html";
 	}
@@ -75,7 +73,7 @@ public class HomeController {
 		USN = USn;
 		System.out.println(USN);
 		session.setAttribute("usn", USn);
-		String USN=(String)session.getAttribute("usn");
+		
 		return "redirect:issueBook.html";
 	}
 	

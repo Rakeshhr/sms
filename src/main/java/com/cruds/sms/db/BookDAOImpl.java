@@ -14,7 +14,7 @@ public class BookDAOImpl {
 	
 	public List<FormBean> getAllBook()
 	{
-		String sql = "select Book.ISBN,Book.category,Book.title,Author.authorName,Author.mailID from Book inner join Author where Book.ISBN=Author.BOOK_ISBN";
+		String sql = "select Book.ISBN,Book.category,Book.title,Author.authorName,Author.mailID from Book inner join Author where Book.auth_id=Author.auth_id";
 		List<FormBean> list = new ArrayList<>();
 		FormBean s = null;
 		

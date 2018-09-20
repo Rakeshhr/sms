@@ -41,7 +41,7 @@ public class CourseDAOImpl {
 
 	public List<FormBean> search(String key)
 	{
-		String sql = "select Book.ISBN,Book.title,Book.category,Author.authorName,Author.mailID from Book inner join Author on Book.ISBN=Author.Book_ISBN where title LIKE ? or category LIKE ? or authorName LIKE ?";
+		String sql = "select Book.ISBN,Book.title,Book.category,Author.authorName,Author.mailID from Book inner join Author on Book.auth_id=Author.auth_id where title LIKE ? or category LIKE ? or authorName LIKE ?";
 		List<FormBean> list = new ArrayList<>();
 		FormBean s = null;
 		
@@ -93,7 +93,7 @@ public class CourseDAOImpl {
 	
 	public List<FormBean> searchBook(String key)
 	{
-		String sql = "select Book.ISBN,Book.title,Book.category,Author.authorName,Author.mailID from Book inner join Author on Book.ISBN=Author.Book_ISBN where title LIKE ? or category LIKE ? or authorName LIKE ?";
+		String sql = "select Book.ISBN,Book.title,Book.category,Author.authorName,Author.mailID from Book inner join Author on Book.auth_id=Author.auth_id where title LIKE ? or category LIKE ? or authorName LIKE ?";
 		List<FormBean> list = new ArrayList<>();
 		FormBean s = null;
 		

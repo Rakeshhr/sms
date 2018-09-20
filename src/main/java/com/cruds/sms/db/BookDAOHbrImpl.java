@@ -18,10 +18,24 @@ public class BookDAOHbrImpl implements BookDAO{
 
 
 	@Override
+	@Deprecated
 	public boolean create(Book book, Author author) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		session.save(author);
+		session.save(book);
+		tx.commit();
+		session.close();
+		System.out.println("Hibernate DAO Create book Method");
+		return true;
+	}
+
+
+
+	@Override
+	public boolean create(Book book) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
 		session.save(book);
 		tx.commit();
 		session.close();

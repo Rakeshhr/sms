@@ -11,15 +11,11 @@ import org.springframework.stereotype.Repository;
 
 import com.cruds.sms.entity.BookIssue;
 
-
-
 @Repository
 public class IssueBookHbrImpl implements IssueBookDAO{
 	
 	@Autowired
 	SessionFactory sessionFactory;
-
-	
 
 	@Override
 	public boolean issuebook(String USN, int ISBN) {

@@ -1,6 +1,5 @@
 package com.cruds.sms.db;
 
-import com.cruds.sms.entity.BookIssue;
 
 public interface IssueBookDAO {
 	

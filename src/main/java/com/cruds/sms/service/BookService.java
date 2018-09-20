@@ -21,10 +21,11 @@ public class BookService {
 	@Autowired
 	SearchDAO searchDAO;
 	
-	public boolean create(Book book,Author author)
+	public boolean create(Book book)
 	{
 		//BookDAOImpl dao = new BookDAOImpl();
-		return bookDAO.create(book,author);
+		//return bookDAO.create(book,author);
+		return bookDAO.create(book);
 	}
 	
 	public static List<FormBean> getAllBook()
