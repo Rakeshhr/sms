@@ -149,5 +149,16 @@ public class HomeController {
 		
 	}
 	
+	
+	@RequestMapping(value="/listissuebook",method=RequestMethod.POST)
+	public ModelAndView listissueBook1(@RequestParam("Date1") String date1,@RequestParam("Date2") String date2)
+	{
+		IssueBookService ser = new  IssueBookService();
+		ModelAndView mv = new ModelAndView("listissuebook", "command", new FormBean());
+		mv.addObject("LIST",ser.listissuebook(date1, date2));
+		return mv;
+	}
+	
+	
 
 }
