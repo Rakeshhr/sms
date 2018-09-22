@@ -200,20 +200,19 @@ $(document).ready(function() {
 	      </div>
          </div>
         </section>
+              <form action="listissuebook.html" method="post">
+              <div class="form-group">
+                      <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                        <a href="cancel.html" class="btn btn-default" type="button">Cancel</a>
+                      </div>
+                    </div>	
+                </form>
               
      </div>
     </div>
    </section>
   </section>
-     
-              
-					<div class="form-group">
-                      <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                        <a href="cancel.html" class="btn btn-default" type="button">Cancel</a>
-                      </div>
-                    </div>							
-									
-							
+					
 </body>
 </html>
