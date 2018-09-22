@@ -141,6 +141,13 @@ public class HomeController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/listissuebook",method=RequestMethod.GET)
+	public String listissuebook()
+	{
+		
+		return "listissuebook";
+		
+	}
 	
 
 }

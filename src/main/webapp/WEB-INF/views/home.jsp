@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
- <!-- Bootstrap CSS -->
+<title>Home</title>
+ 
+  <!-- Bootstrap CSS -->
   <link href="static/css/bootstrap.min.css" rel="stylesheet">
   <!-- bootstrap theme -->
   <link href="static/css/bootstrap-theme.css" rel="stylesheet">
@@ -13,18 +14,54 @@
   <!-- font icon -->
   <link href="static/css/elegant-icons-style.css" rel="stylesheet" />
   <link href="static/css/font-awesome.min.css" rel="stylesheet" />
-  
- 
-  <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-  <link href="static/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <link href="static/css/daterangepicker.css" rel="stylesheet" />
+  <link href="static/css/bootstrap-datepicker.css" rel="stylesheet" />
+  <link href="static/css/bootstrap-colorpicker.css" rel="stylesheet" />
+  <!-- date picker -->
+
+  <!-- color picker -->
+
   <!-- Custom styles -->
-  <link rel="stylesheet" href="css/fullcalendar.css">
-  <link href="static/css/widgets.css" rel="stylesheet">
   <link href="static/css/style.css" rel="stylesheet">
   <link href="static/css/style-responsive.css" rel="stylesheet" />
-  <link href="static/css/xcharts.min.css" rel=" stylesheet">
-  <link href="static/scss/jquery-ui-1.10.4.min.css" rel="stylesheet">
+  
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <!-- nice scroll -->
+  <script src="static/js/jquery.scrollTo.min.js"></script>
+  <script src="static/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+  <!-- jquery ui -->
+  <script src="static/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+  <!--custom checkbox & radio-->
+  <script type="text/javascript" src="static/js/ga.js"></script>
+  <!--custom switch-->
+  <script src="static/js/bootstrap-switch.js"></script>
+  <!--custom tagsinput-->
+  <script src="static/js/jquery.tagsinput.js"></script>
+
+  <!-- colorpicker -->
+
+  <!-- bootstrap-wysiwyg -->
+  <script src="static/js/jquery.hotkeys.js"></script>
+  <script src="static/js/bootstrap-wysiwyg.js"></script>
+  <script src="static/js/bootstrap-wysiwyg-custom.js"></script>
+  <script src="static/js/moment.js"></script>
+  <script src="static/js/bootstrap-colorpicker.js"></script>
+  <script src="static/js/daterangepicker.js"></script>
+  <script src="static/js/bootstrap-datepicker.js"></script>
+  <!-- ck editor -->
+  <script type="text/javascript" src="static/assets/ckeditor/ckeditor.js"></script>
+ 
+  <!-- custome script for all page -->
+  <script src="static/js/scripts.js"></script>
+   <!-- custom form component script for this page-->
+ <!--  <script src="static/js/form-component.js"></script> -->
+
+
 </head>
+
 <body>
 
 	<section id="container" class="">
@@ -36,19 +73,7 @@
       		<a href="home.html" class="logo">CRUDS <span class="lite">INFOTECH</span></a>
       		<!--logo end-->
      <div class="top-nav notification-row">
-     
-      <div class="nav search-row" id="top_menu">
-        <!--  search form start -->
-        <ul class="nav top-menu">
-          <li>
-            <form class="navbar-form">
-            <span>Search here</span>
-              <input class="form-control" placeholder="Search" type="text">
-            </form>
-          </li>
-        </ul>
-        <!--  search form end -->
-      </div>
+
         	
         <ul class="nav pull-right top-menu">
         	
@@ -73,6 +98,8 @@
        </div>
             
        </header>
+  
+       
         <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
@@ -94,8 +121,14 @@
                           <i class="icon_book_alt"></i>
                           <span>Search a Book</span>
             </a>
-		</li>
+			</li>
 		
+			<li>
+			<a class="" href="listissuebook.html">
+                          <i class="icon_book_alt"></i>
+                          <span>List of IssueBook</span>
+            </a>
+			</li>
 		 
         </ul>
       </div>

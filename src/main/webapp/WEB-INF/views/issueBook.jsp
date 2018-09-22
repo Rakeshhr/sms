@@ -4,8 +4,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ include file="home.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	 <section id="main-content">
-      <section class="wrapper">
+	<section id="main-content">
+     <section class="wrapper">
 	 <div class="row">
           <div class="col-lg-12">
             <section class="panel">
