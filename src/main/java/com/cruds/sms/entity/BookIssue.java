@@ -16,27 +16,33 @@ public class BookIssue {
 	@Column
 	private String USN;
 	@Column
+	private int ISBN;
+	@Column
 	private String issueDate;
 	@Column
 	private String returnDate;
-	@Column
-	private int ISBN;
-	public BookIssue(int issueID, String uSN, String issueDate, String returnDate, int iSBN) {
+	
+	
+	
+	
+	public BookIssue(int issueID, String uSN, int iSBN, String issueDate, String returnDate) {
 		super();
 		this.issueID = issueID;
 		USN = uSN;
+		ISBN = iSBN;
 		this.issueDate = issueDate;
 		this.returnDate = returnDate;
-		ISBN = iSBN;
 	}
 	
-	public BookIssue(String uSN, String issueDate, String returnDate, int iSBN) {
+	
+	public BookIssue(String uSN, int iSBN, String issueDate, String returnDate) {
 		super();
 		USN = uSN;
+		ISBN = iSBN;
 		this.issueDate = issueDate;
 		this.returnDate = returnDate;
-		ISBN = iSBN;
 	}
+
 
 	public BookIssue() {
 		super();

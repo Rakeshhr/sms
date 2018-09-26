@@ -2,6 +2,9 @@ package com.cruds.sms.controller;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 
@@ -150,15 +153,19 @@ public class HomeController {
 	}
 	
 	
-//	@RequestMapping(value="/listissuebook",method=RequestMethod.POST)
-//	public ModelAndView listissueBook1(@RequestParam("Date1") String date1,@RequestParam("Date2") String date2)
-//	{
-//		IssueBookService ser = new  IssueBookService();
-//		ModelAndView mv = new ModelAndView("listissuebook", "command", new FormBean());
-//		mv.addObject("LIST",ser.listissuebook(date1, date2));
-//		return mv;
-//	}
-//	
+	@RequestMapping(value="/listissuebook",method=RequestMethod.POST)
+	public ModelAndView listissueBook1(@RequestParam("Date1") Date date1,@RequestParam("Date2") Date date2)
+	{
+		IssueBookService ser = new  IssueBookService();
+		SimpleDateFormat sd1 = new SimpleDateFormat("MM/dd/YYYY");
+		SimpleDateFormat sd2 = new SimpleDateFormat("MM/dd/YYYY");
+		String d1 = sd1.format(date1);
+		String d2 = sd2.format(date2);
+		ModelAndView mv = new ModelAndView("listissuebook", "command", new BookIssue());
+		mv.addObject("LISTISSUEBOOK",ser.listissuebook(d1, d2));
+		return mv;
+	}
+	
 	
 
 }

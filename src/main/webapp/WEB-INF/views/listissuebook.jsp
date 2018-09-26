@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -168,6 +169,8 @@ $(document).ready(function() {
             <section class="panel">
               
               <div class="panel-body">
+              
+              <form action="listissuebook.html" method="post">
                 <div class="form">
 				  	
 
@@ -175,9 +178,9 @@ $(document).ready(function() {
       <div class='col-md-5'>
       <div class="form-group">
       <h3>Starting date</h3>
-   
+   	
         <div class='input-group date' id='datetimepicker6'>
-          <input type='text' class="form-control" />
+          <input type='text' class="form-control" name="Date1" />
           <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
           </span>
@@ -188,26 +191,70 @@ $(document).ready(function() {
       <div class="form-group">
       <h3>Final date</h3>
         <div class='input-group date' id='datetimepicker7'>
-          <input type='text' class="form-control" />
+          <input type='text' class="form-control" name="Date2" />
           <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
           </span>
         </div>
       </div>
     </div>
-  
-      
-	      </div>
-         </div>
-        </section>
-              <form action="listissuebook.html" method="post">
+    
+    
               <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" type="submit">Search</button>
                         <a href="cancel.html" class="btn btn-default" type="button">Cancel</a>
                       </div>
                     </div>	
-                </form>
+ 			 </form>
+      
+	      </div>
+         </div>
+        </section>
+        
+         
+              
+        
+        <h2>Existing Books</h2>
+		
+    <div class="row">
+    
+		<c:if test="${not empty LISTISSUEBOOK}"/>
+
+		<div class="col-sm-6">
+            <section class="panel">
+              <header class="panel-heading">Book Details</header>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Issue ID</th>
+		    		<th>USN</th>
+		    		<th>Issue Date</th>
+		    		<th>Return Date</th>
+		    		 <th>ISBN</th>
+		    		<th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <c:forEach var="s" items="${LISTISSUEBOOK}">
+					<tr>
+						<td> <c:out value="${s.issueID}"/> </td>
+						<td><c:out value="${s.USN}"/></td>
+						<td><c:out value="${s.issueDate}"/></td>
+						<td><c:out value="${s.returnDate}"/></td>
+						<td><c:out value="${s.ISBN}"/></td>
+						
+<%-- 						<td><a href="<c:url value='/bookdel-${s.ISBN}'/>">Delete</a></td> --%>
+					</tr>
+				</c:forEach>
+                </tbody>
+              </table>
+            </section>
+          </div>
+	</div>
+        
+        
+             
               
      </div>
     </div>

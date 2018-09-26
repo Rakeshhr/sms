@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -28,12 +29,23 @@ public class IssueBookHbrImpl implements IssueBookDAO{
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		Date date = new Date();
-		SimpleDateFormat sd = new SimpleDateFormat("dd/MM/YY");
+		SimpleDateFormat sd = new SimpleDateFormat("MM/dd/YYYY");
+		
 		String issueDate = sd.format(date);
-		SimpleDateFormat sd1 = new SimpleDateFormat("MM/YY");
-		int my = 7+date.getDate();
-		String returnDate = my + "/" + sd1.format(date);
-		BookIssue issue = new BookIssue(USN,issueDate,returnDate,ISBN);
+		
+		//SimpleDateFormat sd1 = new SimpleDateFormat("MM/dd/YYYY");
+		//SimpleDateFormat sd2 = new SimpleDateFormat("YYYY");
+		
+		 Calendar c = Calendar.getInstance();
+	     c.setTime(date);
+	     c.add(Calendar.DATE, 7);
+	     Date retdate = c.getTime();
+	     String returnDate = sd.format(retdate);
+//		int month = date.getMonth();
+//		
+//		int my = 7+date.getDate();
+//		String returnDate = sd1.format(date) + "/" + my + "/" + sd2.format(date);
+		BookIssue issue = new BookIssue(USN,ISBN,issueDate,returnDate);
 		session.save(issue);
 		tx.commit();
 		session.close();
