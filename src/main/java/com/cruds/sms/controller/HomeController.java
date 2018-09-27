@@ -4,6 +4,7 @@ package com.cruds.sms.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,9 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cruds.sms.db.CourseDAOImpl;
+import com.cruds.sms.db.ExcelHelper;
+import com.cruds.sms.db.StudentDAOImpl;
 import com.cruds.sms.entity.Author;
 import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.BookIssue;
@@ -164,6 +168,39 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("listissuebook", "command", new BookIssue());
 		mv.addObject("LISTISSUEBOOK",ser.listissuebook(d1, d2));
 		return mv;
+	}
+	
+	@RequestMapping(value="/readexcel",method=RequestMethod.GET)
+	public String readexcel()
+	{
+		
+		return "readexcel";
+		
+	}
+	
+//	@RequestMapping(value="/readexcel",method=RequestMethod.POST)
+//	public String addbookexcel(@RequestParam("myFile") MultipartFile file)
+//	{
+//		StudentDAOImpl dao = new StudentDAOImpl();
+//		
+//		ExcelHelper exe = new ExcelHelper();
+//		List<Student> students = exe.addBook(file);
+//		for(Student student : students)
+//		{
+//			dao.create(student);
+//		}
+//		return "redirect:readexcel.html";
+//	}
+	
+	@RequestMapping(value="/readexcel",method=RequestMethod.POST)
+	public String bulkinsert(@RequestParam("myFile") MultipartFile file)
+	{
+		StudentDAOImpl dao = new StudentDAOImpl();
+		
+		ExcelHelper exe = new ExcelHelper();
+		List<Student> students = exe.addBook(file);
+		dao.bulkInsert(students);
+		return "redirect:readexcel.html";
 	}
 	
 	

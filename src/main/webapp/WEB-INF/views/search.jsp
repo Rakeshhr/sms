@@ -50,8 +50,8 @@
                 <thead>
                   <tr>
                     <th>ISBN</th>
+                    <th>Category</th>
                     <th>Title</th>
-		    		<th>Category</th>
 		    		<th>Author Name</th>
 		    		<th>Author MailID</th>
 		    		<th></th>

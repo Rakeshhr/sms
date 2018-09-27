@@ -128,6 +128,11 @@
                           <i class="icon_book_alt"></i>
                           <span>List of IssueBook</span>
             </a>
+            
+            <a class="" href="readexcel.html">
+                          <i class="icon_book_alt"></i>
+                          <span>Select file to add Book</span>
+            </a>
 			</li>
 		 
         </ul>

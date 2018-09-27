@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,26 +38,54 @@ public class StudentDAOImpl {
 	}
 	
 	
-//	public boolean create(Student student)
-//	{
-//		String sql = "insert into student values(?,?,?)";
-//		int rows =0;
-//		
-//		try(Connection conn = DBConnectionManager.getConnection())
-//		{
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setInt(1, student.getRollNo());
-//			ps.setString(2, student.getFirstName());
-//			ps.setString(3, student.getLastName());
-//			
-//			rows = ps.executeUpdate();
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return rows > 0;
-//		
-//	}
+	public boolean create(Student student)
+	{
+		String sql = "insert into student values(?,?)";
+		int rows =0;
+		
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, student.getUSN());
+			ps.setString(2, student.getName());
+			
+			rows = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rows > 0;
+		
+	}
+	
+	public boolean bulkInsert(List<Student> students)
+	{
+		String sql = "insert into student values(?,?)";
+		int rows =0;
+		
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			Statement stmt = null;
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			for (Student student1: students) {
+
+				ps.setString(1, student1.getUSN());
+				ps.setString(2, student1.getName());
+				ps.addBatch();
+			}
+			ps.executeBatch();
+			ps.close();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rows > 0;
+		
+	}
 
 }

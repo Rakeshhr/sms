@@ -36,27 +36,30 @@ public class UserDAO {
 
 	}
 
-	public boolean authenticateUser(String firstName,String password,String type ) {
-		String sql = "select 1 from user where firstname=? and password=? and type=? ";
-		boolean found = false;
+	public String authenticateUser(String firstName,String password ) {
+		String sql = "select type from user where firstname=? and password=? ";
+		String type=null;
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,firstName);
 			ps.setString(2, password);
-			ps.setString(3, type);
+			
 			ResultSet rs = ps.executeQuery();
+			
+			
 
 			//String rsUserName = null;
 			//  String rsPassword = null;
 			if(rs != null &&  rs.next()){
-				found = true;
+				
+				type = rs.getString(1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
-		return found; 
+		return type; 
 
 
 

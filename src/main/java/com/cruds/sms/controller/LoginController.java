@@ -40,33 +40,32 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/checklogin",method=RequestMethod.POST)
-	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("type") String type,RedirectAttributes redirectAttributes, ModelMap model,HttpSession session)
+	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,RedirectAttributes redirectAttributes, ModelMap model,HttpSession session)
 	{
 			
-			boolean user = UserService.authenticateUser(username, password,type);
+			String user = UserService.authenticateUser(username, password);
 			
-			if(user && type.equals("Student"))
+			if(user.equals("student"))
 			{
 				session.setAttribute("uname",username);
 				model.addAttribute("USER", user);
 				return "redirect:student.html";
 			}
 			
-			if(user && type.equals("Librarian"))
+			if(user.equals("Librarian"))
 			{
-				if(user)
-				{
+				
 					session.setAttribute("uname",username);
 					model.addAttribute("USER", user);
 					return "home";
-				}
+				
 			}
 			else
 			{
 				redirectAttributes.addAttribute("error", "Invalid username and password!");
 				return "redirect:login";
 			}
-			return "asxx";
+			
 		
 	}
 	
