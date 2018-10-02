@@ -10,12 +10,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cruds.sms.util.HibernateUtil;
+import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.BookIssue;
 
 @Repository
@@ -32,19 +35,13 @@ public class IssueBookHbrImpl implements IssueBookDAO{
 		SimpleDateFormat sd = new SimpleDateFormat("MM/dd/YYYY");
 		
 		String issueDate = sd.format(date);
-		
-		//SimpleDateFormat sd1 = new SimpleDateFormat("MM/dd/YYYY");
-		//SimpleDateFormat sd2 = new SimpleDateFormat("YYYY");
-		
+	
 		 Calendar c = Calendar.getInstance();
 	     c.setTime(date);
 	     c.add(Calendar.DATE, 7);
 	     Date retdate = c.getTime();
 	     String returnDate = sd.format(retdate);
-//		int month = date.getMonth();
-//		
-//		int my = 7+date.getDate();
-//		String returnDate = sd1.format(date) + "/" + my + "/" + sd2.format(date);
+
 		BookIssue issue = new BookIssue(USN,ISBN,issueDate,returnDate);
 		session.save(issue);
 		tx.commit();
@@ -52,7 +49,70 @@ public class IssueBookHbrImpl implements IssueBookDAO{
 		System.out.println("Hibernate DAO Issue book Method");
 		return true;
 	}
+	
+	
+	public boolean decrnofobooks(int isbn)
+	{
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		
+		Session session = sessionFactory.openSession();
 
+		Transaction tx = session.beginTransaction();
+		
+		Query query = session.createQuery("from Book where ISBN=:ISBN");
+		
+		query.setParameter("ISBN", isbn);
+		
+		Book book = (Book) query.uniqueResult();
+		
+		int noofcopies = book.getNoOfCopies();
+		
+		noofcopies = noofcopies-1;
+		
+		book.setNoOfCopies(noofcopies);
+		
+		session.save(book);
+		
+		tx.commit();
+		
+		session.close();
+		
+		return true;
+	}
+	
+	public boolean checknoofbooks(int isbn)
+	{
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		Query query = session.createQuery("from Book where ISBN=:ISBN");
+		
+		query.setParameter("ISBN", isbn);
+		
+		Book book = (Book) query.uniqueResult();
+		
+		int noofcopies = book.getNoOfCopies();
+		
+		if(noofcopies>=1)
+		{
+			tx.commit();
+			
+			session.close();
+			
+			return true;
+		}
+		else
+		{
+			tx.commit();
+			
+			session.close();
+			
+			return false;
+		}
+	}
 	
 
 }

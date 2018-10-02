@@ -59,6 +59,8 @@ public class UserDAO {
 			e.printStackTrace();
 
 		}
+		System.out.println("User Type:"  + type);
+		
 		return type; 
 
 

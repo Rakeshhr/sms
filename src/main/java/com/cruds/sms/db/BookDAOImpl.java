@@ -7,6 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.cruds.sms.util.HibernateUtil;
+import com.cruds.sms.entity.Author;
 import com.cruds.sms.entity.Book;
 import com.cruds.sms.entity.FormBean;
 
@@ -14,7 +21,7 @@ public class BookDAOImpl {
 	
 	public List<FormBean> getAllBook()
 	{
-		String sql = "select Book.ISBN,Book.category,Book.title,Author.authorName,Author.mailID from Book inner join Author where Book.auth_id=Author.auth_id";
+		String sql = "select b.ISBN,b.category,b.title,a.authorName,a.mailID from Book b,Author a,book_author ba where b.isbn = ba.books_isbn and a.auth_id = ba.authors_auth_id";
 		List<FormBean> list = new ArrayList<>();
 		FormBean s = null;
 		
@@ -79,4 +86,48 @@ public class BookDAOImpl {
 		return rows > 0;
 		
 	}
+	
+	
+	
+	public void createBulk(List<Book> bookList) {
+		
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		Query query = session.createQuery("from Author where mailid=:mailid");
+		
+		
+		for(Book book : bookList)
+		{
+			List<Author> listfromexcel = book.getAuthors();
+			
+			book.setAuthors(new ArrayList<Author>());
+			
+			for(Author auth : listfromexcel)
+			{
+				query.setParameter("mailid",auth.getMailID());
+				Author dbAuth = (Author) query.uniqueResult();
+				if(dbAuth != null)
+				{
+					book.addAuthor(dbAuth);
+				}
+				else
+				{
+					book.addAuthor(auth);
+				}
+				
+			}
+			session.save(book);			
+		}
+		
+		tx.commit();
+		session.close();
+		
+		
+	}
+	
+	
 }

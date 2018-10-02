@@ -42,17 +42,30 @@ public class LoginController {
 	@RequestMapping(value="/checklogin",method=RequestMethod.POST)
 	public String checkLogin(@RequestParam("username") String username,@RequestParam("password") String password,RedirectAttributes redirectAttributes, ModelMap model,HttpSession session)
 	{
+			if(username == null || password == null || username.trim().length() == 0 || password.trim().length() == 0)
+			{
+				redirectAttributes.addAttribute("error", "Invalid username and password!");
+				return "redirect:login";
+			}
 			
+			else
+			{
 			String user = UserService.authenticateUser(username, password);
 			
-			if(user.equals("student"))
+			if(user == null)
+			{
+				redirectAttributes.addAttribute("error", "Invalid username and password!");
+				return "redirect:login";
+			}
+			
+			else if(user.equals("student"))
 			{
 				session.setAttribute("uname",username);
 				model.addAttribute("USER", user);
 				return "redirect:student.html";
 			}
 			
-			if(user.equals("Librarian"))
+			else if (user.equals("Librarian"))
 			{
 				
 					session.setAttribute("uname",username);
@@ -62,10 +75,12 @@ public class LoginController {
 			}
 			else
 			{
-				redirectAttributes.addAttribute("error", "Invalid username and password!");
+				redirectAttributes.addAttribute("error", "Please contact system admin!");
 				return "redirect:login";
 			}
 			
+			
+			}
 		
 	}
 	

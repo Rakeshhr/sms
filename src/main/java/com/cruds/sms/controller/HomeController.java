@@ -3,6 +3,7 @@ package com.cruds.sms.controller;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,9 +19,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cruds.sms.db.BookDAOHbrImpl;
+import com.cruds.sms.db.BookDAOImpl;
 import com.cruds.sms.db.CourseDAOImpl;
 import com.cruds.sms.db.ExcelHelper;
+import com.cruds.sms.db.IssueBookHbrImpl;
 import com.cruds.sms.db.StudentDAOImpl;
 import com.cruds.sms.entity.Author;
 import com.cruds.sms.entity.Book;
@@ -59,11 +64,12 @@ public class HomeController {
 		//book.setISBN(bean.getISBN());
 		book.setTitle(bean.getTitle());
 		book.setCategory(bean.getCategory());
+		List<Author> authors = new ArrayList<>();
 		Author author = new Author();
 		author.setAuthorName(bean.getAuthorName());
 		author.setMailID(bean.getMailID());
-	
-		book.setAuthor(author);
+	    authors.add(author);
+		book.setAuthors(authors);
 		
 		bookService.create(book);
 		return "redirect:book.html";
@@ -91,16 +97,28 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value="/issueBook",method=RequestMethod.POST)
-	public String issueBook1(HttpSession session)
+	public String issueBook1(HttpSession session,RedirectAttributes redirectAttributes)
 	{
 		String USN=(String)session.getAttribute("usn");
 		System.out.println(USN);
 		int ISBN = (Integer)session.getAttribute("isbn");
 		System.out.println(ISBN);
+		IssueBookHbrImpl dao = new IssueBookHbrImpl();
+		boolean check = dao.checknoofbooks(ISBN);
+		if(check)
+		{
 		issueSer.issue(USN,ISBN);
+		dao.decrnofobooks(ISBN);
 		session.removeAttribute("usn");
 		session.removeAttribute("isbn");
 		return "redirect:issueBook.html";
+		}
+		else
+		{
+			redirectAttributes.addAttribute("errorMessage", "Invalid IssueBook");
+			return "redirect:issueBook.html";
+		}
+		
 	}
 	@RequestMapping(value="/search",method=RequestMethod.GET)
 	public String searchBook()
@@ -201,6 +219,25 @@ public class HomeController {
 		List<Student> students = exe.addBook(file);
 		dao.bulkInsert(students);
 		return "redirect:readexcel.html";
+	}
+	
+	@RequestMapping(value="/bulkbookissue",method=RequestMethod.GET)
+	public String bulkbookissue()
+	{
+		
+		return "bulkbookissue";
+		
+	}
+	
+	@RequestMapping(value="/bulkbookissue",method=RequestMethod.POST)
+	public String bulkbookissue1(@RequestParam("myFile") MultipartFile file)
+	{
+		BookDAOImpl dao = new BookDAOImpl();
+		
+		ExcelHelper exe = new ExcelHelper();
+		List<Book> book = exe.helper(file);
+		dao.createBulk(book);
+		return "redirect:bulkbookissue.html";
 	}
 	
 	

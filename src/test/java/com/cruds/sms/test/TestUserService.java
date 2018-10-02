@@ -46,7 +46,7 @@ public class TestUserService {
 	public void authenticatePass()
 	{
 		//User user = new User("Sada", "Rud", "sada@gmail.com", "1234", "xyz","dwda"); 
-		boolean result = UserService.authenticateUser("Sada", "xyz","dwda");
+		String result = UserService.authenticateUser("Sada", "xyz");
 		assertTrue(result);
 	}
 	
@@ -54,7 +54,7 @@ public class TestUserService {
 	@Ignore
 	public void authenticateFail()
 	{
-		boolean result = UserService.authenticateUser("Sada", "123","gftf");
+		String result = UserService.authenticateUser("Sada", "123");
 		assertFalse(result);
 	}
 	

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -6,6 +7,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 	<section id="main-content">
      <section class="wrapper">
+    
+    	
+    	 <%
+    	 String err_msg=request.getParameter("errorMessage");
+
+    	     if(err_msg!= null ){
+    	 %>
+    	  <script type="text/javascript" >
+    	      alert("Error:No more Copies of Books");
+
+    	   </script>
+    	<%
+    	  }
+    	%>
+    	 
+    	 
+     
+     
+     
+     </script>
 	 <div class="row">
           <div class="col-lg-12">
             <section class="panel">
@@ -140,7 +161,7 @@
          <form action="issueBook.html" method="post">
 					<div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button class="btn btn-primary" type="submit" onclick="myFunction()">Save</button>
                         <a href="cancel.html" class="btn btn-default" type="button">Cancel</a>
                       </div>
                     </div>							

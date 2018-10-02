@@ -57,13 +57,7 @@
           <input name="password" type="password" class="form-control" placeholder="Password">
 
         </div>
-<!--        <div class="form-group"> -->
-<!--        <label class="control-label col-lg-2" for="inputSuccess">Type</label> -->
-<!--         <select class="form-control m-bot15" name="type"> -->
-              <option>Student</option>
-              <option>Librarian</option>
-<!--         </select> -->
-<!--         </div> -->
+
         <label class="checkbox">
                 <input type="checkbox" value="remember-me"> Remember me
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
@@ -71,6 +65,7 @@
           				<c:if test="${param.error != null}">
 								<div class="alert alert-danger">
 									<p>Invalid username and password.</p>
+									
 								</div>
 							</c:if>
 							<c:if test="${param.logout != null}">

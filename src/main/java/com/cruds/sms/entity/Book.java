@@ -1,13 +1,19 @@
 package com.cruds.sms.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
+import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "book")
@@ -22,9 +28,11 @@ public class Book {
 	@Column
 	private String category;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="auth_id")
-	private Author author;
+	@ManyToMany(cascade=CascadeType.ALL)
+	private List<Author> authors = new ArrayList<Author>();
+	
+	@Column
+	private int noOfCopies;
 	
 	
 	public Book() {
@@ -49,17 +57,31 @@ public class Book {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
-
-	public Author getAuthor() {
-		return author;
+	public List<Author> getAuthors() {
+		return authors;
 	}
-	public void setAuthor(Author author) {
-		this.author = author;
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+	
+	
+	
+	public int getNoOfCopies() {
+		return noOfCopies;
+	}
+	public void setNoOfCopies(int noOfCopies) {
+		this.noOfCopies = noOfCopies;
 	}
 	@Override
 	public String toString() {
-		return "Book [ISBN=" + ISBN + ", title=" + title + ", category=" + category + ", author=" + author + "]";
+		return "Book [ISBN=" + ISBN + ", title=" + title + ", category=" + category + ", authors=" + authors + "]";
+	}
+	
+
+	public void addAuthor(Author author)
+	{
+		authors.add(author);
+		
 	}
 	
 	

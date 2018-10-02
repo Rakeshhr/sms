@@ -131,6 +131,10 @@
             
             <a class="" href="readexcel.html">
                           <i class="icon_book_alt"></i>
+                          <span>Select file to add Student</span>
+            </a>
+             <a class="" href="bulkbookissue.html">
+                          <i class="icon_book_alt"></i>
                           <span>Select file to add Book</span>
             </a>
 			</li>

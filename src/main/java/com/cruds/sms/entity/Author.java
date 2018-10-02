@@ -7,8 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
+
+
+
+
 
 @Entity
 @Table(name="author")
@@ -25,7 +30,7 @@ public class Author {
 	@Column
 	private String mailID;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="author")
+	@ManyToMany(cascade=CascadeType.ALL , mappedBy="authors")
 	private List<Book> books;
 	
 	public Author(String authorName, String mailID) {
@@ -64,6 +69,11 @@ public class Author {
 	}
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+	
+	public void addBook(Book book)
+	{
+		books.add(book);
 	}
 	@Override
 	public String toString() {
